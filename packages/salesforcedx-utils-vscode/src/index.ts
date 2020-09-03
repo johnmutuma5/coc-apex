@@ -7,3 +7,8 @@ export {
   DEFAULT_CONNECTION_TIMEOUT_MS,
   CLIENT_ID
 } from './constants';
+
+export * from './types';
+export * from './cli';
+export * from './helpers';
+export * from './i18n';

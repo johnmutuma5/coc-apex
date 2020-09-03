@@ -1,10 +1,11 @@
 // export {default as apexCreateSobjectFauxClasses} from "./apex-create-sobject-faux-classes";
-import { ExtensionContext, commands, workspace } from 'coc.nvim';
-import { SObjectRefreshSource, FauxClassGenerator } from '@johnmutuma5/salesforce-sobjects-faux-generator/src/generator';
-import { SObjectCategory } from '@johnmutuma5/salesforce-sobjects-faux-generator/src/describe';
-import { ParametersGatherer, ContinueResponse, CancelResponse } from '@johnmutuma5/salesforcedx-utils-vscode/src/types';
+import { ExtensionContext, commands, workspace, Uri } from 'coc.nvim';
+import { SObjectRefreshSource, FauxClassGenerator } from '@johnmutuma5/salesforce-sobjects-faux-generator';
+import { SObjectCategory } from '@johnmutuma5/salesforce-sobjects-faux-generator';
+import { ParametersGatherer, ContinueResponse, CancelResponse } from '@johnmutuma5/salesforcedx-utils-vscode';
 import {EventEmitter} from 'events';
 
+console.log('here');
 export type RefreshSelection = {
   category: SObjectCategory;
   source: SObjectRefreshSource;
@@ -63,21 +64,17 @@ export async function forceGenerateFauxClassesCreate(
       const refreshCategory = params.data.category;
       const refreshSource = params.data.source;
       const gen: FauxClassGenerator = new FauxClassGenerator(new EventEmitter());
-      return gen.generate(workspace.workspaceFolders![0].uri, refreshCategory, refreshSource);
+      const projectPath = Uri.parse(workspace.workspaceFolder.uri);
+      return gen.generate(projectPath.fsPath, refreshCategory, refreshSource);
     case 'CANCEL':
       return workspace.showMessage('Refresh cancelled');
   }
-    // const commandlet = new SfdxCommandlet(
-    //   workspaceChecker,
-    //   parameterGatherer,
-    //   new ForceGenerateFauxClassesExecutor()
-    // );
-    // await commandlet.run();
 }
 
 
 export async function activate(context: ExtensionContext) {
-  context.subscriptions.push(commands.registerCommand('SFDX - Refresh SObjects', async () => {
+  context.subscriptions.push(commands.registerCommand('SFDX.Refresh.SObjects', async () => {
     return forceGenerateFauxClassesCreate(SObjectRefreshSource.Manual);
   }));
 }
+console.log('DONE')

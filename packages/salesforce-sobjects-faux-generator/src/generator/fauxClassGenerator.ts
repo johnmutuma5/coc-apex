@@ -4,9 +4,10 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
+import { workspace } from 'coc.nvim';
 import { AuthInfo, Connection } from '@salesforce/core';
-import { SFDX_PROJECT_FILE } from '@johnmutuma5/salesforcedx-utils-vscode/src';
-import { LocalCommandExecution } from '@johnmutuma5/salesforcedx-utils-vscode/src/cli';
+import { SFDX_PROJECT_FILE } from '@johnmutuma5/salesforcedx-utils-vscode';
+import { LocalCommandExecution } from '@johnmutuma5/salesforcedx-utils-vscode';
 import { EventEmitter } from 'events';
 import * as fs from 'fs';
 import { EOL } from 'os';
@@ -146,7 +147,8 @@ export class FauxClassGenerator {
       !fs.existsSync(path.join(projectPath, SFDX_PROJECT_FILE))
     ) {
       return this.errorExit(
-        nls.localize('no_generate_if_not_in_project', sobjectsFolderPath)
+        'Not in an SFDX project'
+        // nls.localize('no_generate_if_not_in_project', sobjectsFolderPath)
       );
     }
     this.cleanupSObjectFolders(sobjectsFolderPath, type);
@@ -163,6 +165,7 @@ export class FauxClassGenerator {
     let fetchedSObjects: SObject[] = [];
     let sobjects: string[] = [];
     try {
+      workspace.showMessage('Fetching SObject descriptions');
       sobjects = await describe.describeGlobal(projectPath, type);
     } catch (e) {
       const err = JSON.parse(e);
@@ -185,12 +188,14 @@ export class FauxClassGenerator {
           await describe.describeSObjectBatch(filteredSObjects, j)
         );
         j = fetchedSObjects.length;
+        workspace.showMessage(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
       } catch (errorMessage) {
         return this.errorExit(
           nls.localize('failure_in_sobject_describe_text', errorMessage)
         );
       }
     }
+    workspace.showMessage('Fetch Done: Creating Faux SObejct classes');
 
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < fetchedSObjects.length; i++) {
@@ -287,6 +292,7 @@ export class FauxClassGenerator {
       LocalCommandExecution.EXIT_EVENT,
       LocalCommandExecution.SUCCESS_CODE
     );
+    workspace.showMessage('Yeeeehh! Successfully created SObject Faux Classes');
     return Promise.resolve(this.result);
   }
 

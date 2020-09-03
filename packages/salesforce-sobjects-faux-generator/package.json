@@ -7,11 +7,13 @@
   "license": "BSD-3-Clause",
   "main": "out/index.js",
   "engines": {
-    "vscode": "^1.40.0"
+    "coc": "^0.0.46"
   },
   "dependencies": {
-    "@salesforce/core": "2.5.1",
     "@johnmutuma5/salesforcedx-utils-vscode": "49.7.0",
+    "@salesforce/core": "2.5.1",
+    "@types/node": "^14.6.3",
+    "coc.nvim": "0.0.77",
     "cross-spawn": "6.0.5",
     "path-exists": "3.0.0",
     "rxjs": "^5.4.1",
@@ -37,7 +39,7 @@
     "typescript": "3.7.5"
   },
   "scripts": {
-    "compile": "webpack",
+    "compile": "tsc -b tsconfig.json",
     "lint": "tslint --project .",
     "watch": "tsc -watch -p .",
     "clean": "shx rm -rf node_modules && shx rm -rf out",

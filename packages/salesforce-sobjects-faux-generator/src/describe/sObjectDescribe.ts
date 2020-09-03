@@ -12,8 +12,8 @@ import {
   Command,
   CommandOutput,
   SfdxCommandBuilder
-} from '@johnmutuma5/salesforcedx-utils-vscode/src/cli';
-import { extractJsonObject } from '@johnmutuma5/salesforcedx-utils-vscode/src/helpers';
+} from '@johnmutuma5/salesforcedx-utils-vscode';
+import { extractJsonObject } from '@johnmutuma5/salesforcedx-utils-vscode';
 import { CLIENT_ID } from '../constants';
 
 export interface SObject {

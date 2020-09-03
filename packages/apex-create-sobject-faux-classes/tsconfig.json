@@ -1,16 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "lib": ["dom", "es2016"],
-    "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "outDir": "out",
-    "preserveConstEnums": true,
-    "strict": true
+    "outDir": "./out",
+    "rootDir": "./src"
   },
+  "references": [{
+    "path": "../salesforcedx-utils-vscode"
+  },{
+    "path": "../salesforce-sobjects-faux-generator"
+  }],
   "exclude": ["node_modules", "out"]
 }
