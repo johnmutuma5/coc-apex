@@ -1,11 +1,10 @@
 // export {default as apexCreateSobjectFauxClasses} from "./apex-create-sobject-faux-classes";
 import { ExtensionContext, commands, workspace, Uri } from 'coc.nvim';
-import { SObjectRefreshSource, FauxClassGenerator } from '@johnmutuma5/salesforce-sobjects-faux-generator';
-import { SObjectCategory } from '@johnmutuma5/salesforce-sobjects-faux-generator';
-import { ParametersGatherer, ContinueResponse, CancelResponse } from '@johnmutuma5/salesforcedx-utils-vscode';
+import { SObjectRefreshSource, FauxClassGenerator, SObjectCategory  } from './salesforcedx-sobjects-faux-generator';
+import { ParametersGatherer, ContinueResponse, CancelResponse } from './salesforcedx-utils-vscode';
 import {EventEmitter} from 'events';
 
-console.log('here');
+console.info('here');
 export type RefreshSelection = {
   category: SObjectCategory;
   source: SObjectRefreshSource;
@@ -77,4 +76,4 @@ export async function activate(context: ExtensionContext) {
     return forceGenerateFauxClassesCreate(SObjectRefreshSource.Manual);
   }));
 }
-console.log('DONE')
+console.info('DONE')

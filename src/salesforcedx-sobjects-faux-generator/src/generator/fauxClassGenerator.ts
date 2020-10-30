@@ -6,8 +6,7 @@
  */
 import { workspace } from 'coc.nvim';
 import { AuthInfo, Connection } from '@salesforce/core';
-import { SFDX_PROJECT_FILE } from '@johnmutuma5/salesforcedx-utils-vscode';
-import { LocalCommandExecution } from '@johnmutuma5/salesforcedx-utils-vscode';
+import { SFDX_PROJECT_FILE, LocalCommandExecution  } from '../../../salesforcedx-utils-vscode';
 import { EventEmitter } from 'events';
 import * as fs from 'fs';
 import { EOL } from 'os';
@@ -28,7 +27,7 @@ import {
   SObjectDescribe
 } from '../describe';
 import { ConfigUtil } from '../describe/configUtil';
-import { nls } from '../messages';
+import { nls } from '../../';
 
 export const INDENT = '    ';
 const MODIFIER = 'global';
