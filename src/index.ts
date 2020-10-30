@@ -1,14 +1,17 @@
 // export {default as apexCreateSobjectFauxClasses} from "./apex-create-sobject-faux-classes";
-import { ExtensionContext, commands, workspace, Uri } from 'coc.nvim';
+import { ExtensionContext, commands, workspace, Uri, LanguageClient } from 'coc.nvim';
 import { SObjectRefreshSource, FauxClassGenerator, SObjectCategory  } from './salesforcedx-sobjects-faux-generator';
 import { ParametersGatherer, ContinueResponse, CancelResponse } from './salesforcedx-utils-vscode';
 import {EventEmitter} from 'events';
+import * as languageServer from './salesforcedx-vscode-apex/src/languageServer';
 
 console.info('here');
 export type RefreshSelection = {
   category: SObjectCategory;
   source: SObjectRefreshSource;
 };
+
+let languageClient: LanguageClient | undefined;
 
 export class SObjectRefreshGatherer implements ParametersGatherer<RefreshSelection> {
   private source?: SObjectRefreshSource;
@@ -75,5 +78,9 @@ export async function activate(context: ExtensionContext) {
   context.subscriptions.push(commands.registerCommand('SFDX.Refresh.SObjects', async () => {
     return forceGenerateFauxClassesCreate(SObjectRefreshSource.Manual);
   }));
+
+  languageClient = await languageServer.createLanguageServer(context);
+  context.subscriptions.push(languageClient.start());
+  // languageClientUtils.setClientInstance(languageClient);
 }
 console.info('DONE')
