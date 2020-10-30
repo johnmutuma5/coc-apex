@@ -1,8 +1,8 @@
 {
-  "name": "salesforce-create-faux-classes",
-  "displayName": "SFDX Utilities for VS Code",
-  "description": "Create faux classes",
-  "version": "0.0.1",
+  "name": "coc-apex",
+  "displayName": "Coc Apex",
+  "description": "Language Server Client for Apex",
+  "version": "0.0.2",
   "main": "out/src/index.js",
   "publisher": "johnmutuma5",
   "license": "BSD-3-Clause",
