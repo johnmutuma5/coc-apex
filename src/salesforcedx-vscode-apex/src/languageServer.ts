@@ -30,6 +30,7 @@ async function createServer(
   context: ExtensionContext
 ): Promise<Executable> {
   try {
+    !(workspace.workspaceFolders?.length) && workspace.workspaceFolders.push(workspace.workspaceFolder);
     deleteDbIfExists();
     const requirementsData = await requirements.resolveRequirements();
     const uberJar = path.resolve(context.extensionPath, 'apex-lsp', UBER_JAR_NAME);
@@ -133,6 +134,7 @@ function deleteDbIfExists(): void {
 export async function createLanguageServer(
   context: ExtensionContext
 ): Promise<LanguageClient> {
+
   const clientOptions: LanguageClientOptions = {
     // Register the server for Apex documents
     documentSelector: [{ language: 'apexcode', scheme: 'file' }],
