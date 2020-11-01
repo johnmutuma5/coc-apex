@@ -16,7 +16,8 @@
 Install by running this command in vim/NeoVim `CocInstall coc-apex`.
 
 ###  Configure Java Home
-Add you JAVA_HOME to the top level of your coc-settings.json 
+Add your `JAVA_HOME` to the top level of your `coc-settings.json`. Confirm the proper path and version for your `JAVA_HOME`.
+
 ```json
 {
   "salesforcedx-vscode-apex.java.home": "/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home"
