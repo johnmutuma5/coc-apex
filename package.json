@@ -13,19 +13,21 @@
     "coc": ">= 0.0.70"
   },
   "dependencies": {
+    "@salesforce/apex-tmlanguage": "1.4.0",
     "@salesforce/core": "2.5.1",
     "coc.nvim": "0.0.77",
     "cross-spawn": "6.0.5",
+    "expand-home-dir": "0.0.3",
+    "find-java-home": "0.2.0",
     "path-exists": "3.0.0",
     "rxjs": "^5.4.1",
     "shelljs": "0.8.3",
+    "strip-ansi": "^6.0.0",
     "tree-kill": "^1.1.0",
     "ts-loader": "^8.0.3",
-    "@salesforce/apex-tmlanguage": "1.4.0",
-    "expand-home-dir": "0.0.3",
-    "find-java-home": "0.2.0",
     "vscode-extension-telemetry": "0.0.17",
-    "vscode-languageclient": "5.1.1"
+    "vscode-languageclient": "5.1.1",
+    "vscode-languageserver-protocol": "^3.15.3"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",

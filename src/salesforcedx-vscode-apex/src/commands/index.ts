@@ -1,0 +1,1 @@
+export { forceGenerateFauxClassesCreate } from './generateFauxSObjectClasses';

@@ -4,7 +4,7 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { workspace } from 'coc.nvim';
+import { workspace, Neovim } from 'coc.nvim';
 import { AuthInfo, Connection } from '@salesforce/core';
 import { SFDX_PROJECT_FILE, LocalCommandExecution  } from '../../../salesforcedx-utils-vscode';
 import { EventEmitter } from 'events';
@@ -28,6 +28,9 @@ import {
 } from '../describe';
 import { ConfigUtil } from '../describe/configUtil';
 import { nls } from '../../';
+import {notificationService} from '../../../salesforcedx-core/notifications';
+import {channelService} from '../../../salesforcedx-core/channels';
+import {ChannelService} from '../../../salesforcedx-core/channels/channelService';
 
 export const INDENT = '    ';
 const MODIFIER = 'global';
@@ -152,18 +155,18 @@ export class FauxClassGenerator {
     }
     this.cleanupSObjectFolders(sobjectsFolderPath, type);
 
-    const connection = await Connection.create({
-      authInfo: await AuthInfo.create({
-        username: await ConfigUtil.getUsername(projectPath)
-      })
-    });
 
+    const username = await ConfigUtil.getUsername(projectPath);
+    const authInfo = await AuthInfo.create({ username });
+    const connection = await Connection.create({ authInfo });
     const describe = new SObjectDescribe(connection);
     const standardSObjects: SObject[] = [];
     const customSObjects: SObject[] = [];
+
     let fetchedSObjects: SObject[] = [];
     let sobjects: string[] = [];
     try {
+      channelService.appendLine('Fetching SObject descriptions');
       workspace.showMessage('Fetching SObject descriptions');
       sobjects = await describe.describeGlobal(projectPath, type);
     } catch (e) {
@@ -175,6 +178,7 @@ export class FauxClassGenerator {
     }
     const filteredSObjects = sobjects.filter(this.isRequiredSObject);
     let j = 0;
+    
     while (j < filteredSObjects.length) {
       try {
         if (
@@ -187,6 +191,8 @@ export class FauxClassGenerator {
           await describe.describeSObjectBatch(filteredSObjects, j)
         );
         j = fetchedSObjects.length;
+
+        channelService.appendLine(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
         workspace.showMessage(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
       } catch (errorMessage) {
         return this.errorExit(
@@ -194,7 +200,7 @@ export class FauxClassGenerator {
         );
       }
     }
-    workspace.showMessage('Fetch Done: Creating Faux SObejct classes');
+    // channelService2.appendLine('Fetch Done: Creating Faux SObejct classes');
 
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < fetchedSObjects.length; i++) {
@@ -291,7 +297,7 @@ export class FauxClassGenerator {
       LocalCommandExecution.EXIT_EVENT,
       LocalCommandExecution.SUCCESS_CODE
     );
-    workspace.showMessage('Yeeeehh! Successfully created SObject Faux Classes');
+    notificationService.showInformationMessage('Yeeeehh! Successfully created SObject Faux Classes');
     return Promise.resolve(this.result);
   }
 
