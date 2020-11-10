@@ -166,7 +166,8 @@ export class FauxClassGenerator {
     let fetchedSObjects: SObject[] = [];
     let sobjects: string[] = [];
     try {
-      channelService.appendLine('Fetching SObject descriptions');
+      // channelService.appendLine();
+      this.emitter.emit(LocalCommandExecution.STDOUT_EVENT, 'Fetching SObject descriptions');
       workspace.showMessage('Fetching SObject descriptions');
       sobjects = await describe.describeGlobal(projectPath, type);
     } catch (e) {
@@ -192,7 +193,8 @@ export class FauxClassGenerator {
         );
         j = fetchedSObjects.length;
 
-        channelService.appendLine(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
+        this.emitter.emit(LocalCommandExecution.STDOUT_EVENT, `Fetch SObejct at ${j} / ${filteredSObjects.length}`);
+        // channelService.appendLine(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
         workspace.showMessage(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
       } catch (errorMessage) {
         return this.errorExit(
