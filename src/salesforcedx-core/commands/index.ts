@@ -63,10 +63,10 @@ export abstract class SfdxCommandletExecutor<T> implements CommandletExecutor<T>
       env: { SFDX_JSON_TO_STDOUT: 'true' }
     }).execute(cancellationToken);
 
-    let output = '';
-    execution.stdoutSubject.subscribe(realData => {
-      output += realData.toString();
-    });
+    // let output = '';
+    // execution.stdoutSubject.subscribe(realData => {
+    //   output += realData.toString();
+    // });
 
     // execution.processExitSubject.subscribe(exitCode => {
     //   const telemetryData = this.getTelemetryData(

@@ -6,9 +6,9 @@ import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
 import {nls} from "../../../salesforcedx-sobjects-faux-generator";
 import {QuickPickItem} from "vscode";
 import {ParametersGatherer, ContinueResponse, CancelResponse, TestRunner} from "../../../salesforcedx-utils-vscode";
-import {workspace, Neovim} from "coc.nvim";
+import {workspace} from "coc.nvim";
 import {hasRootWorkspace, getRootWorkspacePath} from '../../../salesforcedx-core/utils';
-import {findFiles} from '../utils';
+import {findFiles, getTempFolder} from '../utils';
 
 export enum TestType {
   All,
@@ -124,18 +124,6 @@ export class TestsSelector implements ParametersGatherer<ApexTestQuickPickItem> 
     return selection
       ? { type: 'CONTINUE', data: selection }
       : { type: 'CANCEL' };
-  }
-}
-
-function getTempFolder(): string {
-  if (hasRootWorkspace()) {
-    const apexDir = new TestRunner().getTempFolder(
-      getRootWorkspacePath(),
-      'apex'
-    );
-    return apexDir;
-  } else {
-    throw new Error(nls.localize('cannot_determine_workspace'));
   }
 }
 
