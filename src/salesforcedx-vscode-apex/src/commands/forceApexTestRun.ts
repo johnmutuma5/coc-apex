@@ -79,35 +79,36 @@ export class TestsSelector implements ParametersGatherer<ApexTestQuickPickItem> 
   public async gather(): Promise< CancelResponse | ContinueResponse<ApexTestQuickPickItem>
   > {
     const testQuickPickItems = [];
+    const fileItems = [];
     // const testSuites = await workspace.findFiles('**/*.testSuite-meta.xml');
-    const testSuites = await findFiles('**/*.testSuite-meta.xml', '**/node_modules/**');
-    const fileItems = testSuites.map(testSuite => {
-      const label = path.basename(testSuite.toString()).replace('.testSuite-meta.xml', '');
-      testQuickPickItems.push(label);
-      return {
-        label,
-        description: testSuite.fsPath,
-        type: TestType.Suite
-      };
-    });
+    // const testSuites = await findFiles('**/*.testSuite-meta.xml', '**/node_modules/**');
+    // const fileItems = testSuites.map(testSuite => {
+    //   const label = path.basename(testSuite.toString()).replace('.testSuite-meta.xml', '');
+    //   testQuickPickItems.push(label);
+    //   return {
+    //     label,
+    //     description: testSuite.fsPath,
+    //     type: TestType.Suite
+    //   };
+    // });
 
     // const apexClasses = await workspace.findFiles('**/*.cls');
-    const apexClasses = await findFiles('**/*.cls', '**/node_modules/**');
-    apexClasses.forEach(apexClass => {
-      const fd = fs.openSync(apexClass.fsPath, 'r');
-      const fileContent = fs.readFileSync(apexClass.fsPath).toString();
-      fs.closeSync(fd);
+    // const apexClasses = await findFiles('**/*.cls', '**/node_modules/**');
+    // apexClasses.forEach(apexClass => {
+    //   const fd = fs.openSync(apexClass.fsPath, 'r');
+    //   const fileContent = fs.readFileSync(apexClass.fsPath).toString();
+    //   fs.closeSync(fd);
 
-      if (fileContent && fileContent.toLowerCase().includes('@istest')) {
-        const label = path.basename(apexClass.toString()).replace('.cls', '');
-        testQuickPickItems.push(label);
-        fileItems.push({
-          label,
-          description: apexClass.fsPath,
-          type: TestType.Class
-        });
-      }
-    });
+    //   if (fileContent && fileContent.toLowerCase().includes('@istest')) {
+    //     const label = path.basename(apexClass.toString()).replace('.cls', '');
+    //     testQuickPickItems.push(label);
+    //     fileItems.push({
+    //       label,
+    //       description: apexClass.fsPath,
+    //       type: TestType.Class
+    //     });
+    //   }
+    // });
 
     testQuickPickItems.push('All');
     fileItems.push({
@@ -118,10 +119,12 @@ export class TestsSelector implements ParametersGatherer<ApexTestQuickPickItem> 
       type: TestType.All
     });
 
-    const selectionIndex = (await workspace.showQuickpick(testQuickPickItems));
+    // const selectionIndex = (await workspace.showQuickpick(testQuickPickItems));
+    const selectionIndex = 0;
     const selection = fileItems[selectionIndex] as ApexTestQuickPickItem;
+    const confirm = await workspace.showPrompt('Run all Apex tests?');
 
-    return selection
+    return confirm
       ? { type: 'CONTINUE', data: selection }
       : { type: 'CANCEL' };
   }
