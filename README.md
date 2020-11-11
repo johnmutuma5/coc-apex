@@ -7,8 +7,10 @@
   - Go To References
   - Auto-completion
 
-- Registers IDE commands in Vim/NeoVim enviroment
-    - SFDX Refresh SObject definitions - pulls definitions for SObject fields from the **default** scratch org
+- Registers IDE commands in Vim/NeoVim enviroment: `:CocCommand`
+    - `SFDX.Refresh.SObject` - pulls definitions for SObject fields from the **default** scratch org. You can Go To Definition for SObject fields after this is done. Be sure to set preferred default org
+    - `SFDX.run.apex.class.tests` - run all tests for the tests in the current buffer
+    - `SFDX.run.apex.tests` - run all Apex tests
     - More coming soon
 
 ## Installation
