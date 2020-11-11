@@ -167,8 +167,7 @@ export class FauxClassGenerator {
     let sobjects: string[] = [];
     try {
       // channelService.appendLine();
-      this.emitter.emit(LocalCommandExecution.STDOUT_EVENT, 'Fetching SObject descriptions');
-      workspace.showMessage('Fetching SObject descriptions');
+      this.emitter.emit(LocalCommandExecution.STDOUT_EVENT, 'Fetching SObject descriptions\n\n');
       sobjects = await describe.describeGlobal(projectPath, type);
     } catch (e) {
       const err = JSON.parse(e);
@@ -193,9 +192,8 @@ export class FauxClassGenerator {
         );
         j = fetchedSObjects.length;
 
-        this.emitter.emit(LocalCommandExecution.STDOUT_EVENT, `Fetch SObejct at ${j} / ${filteredSObjects.length}`);
+        this.emitter.emit(LocalCommandExecution.STDOUT_EVENT, `Fetch SObejct at ${j} / ${filteredSObjects.length}\n`);
         // channelService.appendLine(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
-        workspace.showMessage(`Fetch SObejct at ${j} / ${filteredSObjects.length}`);
       } catch (errorMessage) {
         return this.errorExit(
           nls.localize('failure_in_sobject_describe_text', errorMessage)

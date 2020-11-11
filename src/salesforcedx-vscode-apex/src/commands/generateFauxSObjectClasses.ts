@@ -138,7 +138,6 @@ export class ForceGenerateFauxClassesExecutor extends SfdxCommandletExecutor<{}>
         );
       }
 
-      console.log('Generate success ' + result.data);
       // this.logMetric(commandName, startTime, result.data);
     } catch (result) {
       console.log('Generate error ' + result.error);
