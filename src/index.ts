@@ -1,4 +1,3 @@
-// export {default as apexCreateSobjectFauxClasses} from "./apex-create-sobject-faux-classes";
 import { ExtensionContext, commands, LanguageClient } from 'coc.nvim';
 import { SObjectRefreshSource } from './salesforcedx-sobjects-faux-generator';
 import * as languageServer from './salesforcedx-vscode-apex/src/languageServer';
@@ -21,8 +20,6 @@ export async function activate(context: ExtensionContext) {
         // console.log('windows: ', (await (workspace.nvim.windows)).map(win => win.id));
         // console.log('line: ', line);
         // const pos = await workspace.getCursorPosition();
-        // console.log('buffer: ', await (await workspace.nvim.buffer).name);
-        // // console.log('window: ', (await workspace.nvim.window));
         // console.log('line splice: ', line.slice(pos.character))
         // console.log('line: ', await workspace.getLine();
         return forceGenerateFauxClassesCreate(SObjectRefreshSource.Manual);
