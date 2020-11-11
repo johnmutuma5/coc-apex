@@ -1,4 +1,3 @@
-import * as path from 'path';
 import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
 import {SfdxCommandlet} from "../../../salesforcedx-core";
 import {ParametersGatherer, CancelResponse, ContinueResponse} from "../../../salesforcedx-utils-vscode";
@@ -6,6 +5,7 @@ import {workspace, Uri} from "coc.nvim";
 import {SfdxCommandletExecutor} from '../../../salesforcedx-core/commands';
 import {Command, SfdxCommandBuilder} from '../../../salesforcedx-utils-vscode/src/cli/commandBuilder';
 import {getTempFolder} from '../utils';
+import {getCurrentBufferBasename} from '../../../salesforcedx-core/utils/nvim';
 
 
 interface ApexTestClass {
@@ -14,9 +14,7 @@ interface ApexTestClass {
 
 class TestClassSelector implements ParametersGatherer<ApexTestClass> {
   public async gather(): Promise<CancelResponse | ContinueResponse<ApexTestClass>> {
-    const currentBuffer =  await workspace.nvim.buffer;
-    const filePath = Uri.parse(await currentBuffer.name).fsPath;
-    const className = path.basename(filePath).replace(path.extname(filePath), '');
+    const className = await getCurrentBufferBasename();
     return {
       type: 'CONTINUE',
       data: {
