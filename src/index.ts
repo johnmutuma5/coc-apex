@@ -16,19 +16,11 @@ export async function activate(context: ExtensionContext) {
 
     context.subscriptions.push(
       commands.registerCommand('SFDX.Refresh.SObjects', async () => {
-        // const line = await workspace.nvim.getLine();
-        // console.log('windows: ', (await (workspace.nvim.windows)).map(win => win.id));
-        // console.log('line: ', line);
-        // const pos = await workspace.getCursorPosition();
-        // console.log('line splice: ', line.slice(pos.character))
-        // console.log('line: ', await workspace.getLine();
         return forceGenerateFauxClassesCreate(SObjectRefreshSource.Manual);
       }),
       commands.registerCommand('SFDX.run.apex.class.tests', forceApexClassTestRun),
       commands.registerCommand('SFDX.run.apex.tests', forceApexTestRun),
       languageClient.start()
     );
-    // context.subscriptions.push(languageClient.start());
-    // languageClientUtils.setClientInstance(languageClient);
   }
 }
