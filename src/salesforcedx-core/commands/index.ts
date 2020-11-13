@@ -5,7 +5,6 @@ import {notificationService} from "../notifications";
 import {getRootWorkspacePath} from "../utils";
 import {CancellationTokenSource, CancellationToken} from "vscode-languageserver-protocol";
 import {channelService} from "../channels";
-import {EventEmitter} from "events";
 import {Command} from "../../salesforcedx-utils-vscode/src/cli/commandBuilder";
 
 export interface CommandletExecutor<T> {
