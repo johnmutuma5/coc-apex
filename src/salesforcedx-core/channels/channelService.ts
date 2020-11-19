@@ -2,7 +2,7 @@ import {OutputChannel, workspace, Neovim} from "coc.nvim";
 import stripAnsi = require("strip-ansi");
 import {CommandExecution} from "../../salesforcedx-utils-vscode";
 
-export const DEFAULT_SFDX_CHANNEL = workspace.createOutputChannel('SFDX Output Channel');
+export const DEFAULT_SFDX_CHANNEL = workspace.createOutputChannel('SFDX-Output-Channel');
 
 export class ChannelService {
   private readonly channel: OutputChannel;

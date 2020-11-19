@@ -13,6 +13,11 @@ export class EmptyPostChecker implements PostconditionChecker<any> {
 
 
 export class SfdxWorkspaceChecker implements PreconditionChecker {
+  /**
+  * @param {boolean} passive - check workspace passively? Don't show error messages if `true`
+  *
+  *
+  */
   public check(passive?:boolean ): boolean {
     const result = isSfdxProjectOpened.apply(workspace);
     if (!result.result) {

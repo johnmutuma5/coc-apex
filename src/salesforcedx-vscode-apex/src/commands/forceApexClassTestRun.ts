@@ -1,11 +1,8 @@
-import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
 import {SfdxCommandlet} from "../../../salesforcedx-core";
 import {ParametersGatherer, CancelResponse, ContinueResponse} from "../../../salesforcedx-utils-vscode";
-import {workspace, Uri} from "coc.nvim";
-import {SfdxCommandletExecutor} from '../../../salesforcedx-core/commands';
-import {Command, SfdxCommandBuilder} from '../../../salesforcedx-utils-vscode/src/cli/commandBuilder';
-import {getTempFolder} from '../utils';
+import {SfdxApexTestCommandletExecutor} from '../../../salesforcedx-core/commands';
 import {getCurrentBufferBasename} from '../../../salesforcedx-core/utils/nvim';
+import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
 
 
 interface ApexTestClass {
@@ -14,30 +11,18 @@ interface ApexTestClass {
 
 class TestClassSelector implements ParametersGatherer<ApexTestClass> {
   public async gather(): Promise<CancelResponse | ContinueResponse<ApexTestClass>> {
-    const className = await getCurrentBufferBasename();
     return {
       type: 'CONTINUE',
       data: {
-        name: className
+        name: await getCurrentBufferBasename()
       }
     }
   }
 }
 
-class ForceApexClassTestRunExecutor extends SfdxCommandletExecutor<ApexTestClass>{
-  public build(data: ApexTestClass): Command {
-
-    const outputToJson = getTempFolder();
-
-    return new SfdxCommandBuilder()
-      .withDescription('Running Unit Tests for: ' + data.name)
-      .withArg('force:apex:test:run')
-      .withFlag('--tests', data.name)
-      .withFlag('--resultformat', 'human')
-      .withFlag('--outputdir', outputToJson)
-      .withFlag('--loglevel', 'error')
-      .withLogName('force_apex_test_run_code_action')
-      .build()
+class ForceApexClassTestRunExecutor extends SfdxApexTestCommandletExecutor<ApexTestClass>{
+  public getTestName(data: ApexTestClass): string {
+    return data.name;
   }
 }
 

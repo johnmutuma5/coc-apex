@@ -1,14 +1,11 @@
-import * as path from 'path';
-import * as fs from 'fs';
 import {SfdxCommandletExecutor, SfdxCommandlet} from "../../../salesforcedx-core/commands";
 import {Command, SfdxCommandBuilder} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
 import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
 import {nls} from "../../../salesforcedx-sobjects-faux-generator";
 import {QuickPickItem} from "vscode";
-import {ParametersGatherer, ContinueResponse, CancelResponse, TestRunner} from "../../../salesforcedx-utils-vscode";
+import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../../salesforcedx-utils-vscode";
 import {workspace} from "coc.nvim";
-import {hasRootWorkspace, getRootWorkspacePath} from '../../../salesforcedx-core/utils';
-import {findFiles, getTempFolder} from '../utils';
+import {getTempFolder} from '../utils';
 
 export enum TestType {
   All,
@@ -79,36 +76,7 @@ export class TestsSelector implements ParametersGatherer<ApexTestQuickPickItem> 
   public async gather(): Promise< CancelResponse | ContinueResponse<ApexTestQuickPickItem>
   > {
     const testQuickPickItems = [];
-    const fileItems = [];
-    // const testSuites = await workspace.findFiles('**/*.testSuite-meta.xml');
-    // const testSuites = await findFiles('**/*.testSuite-meta.xml', '**/node_modules/**');
-    // const fileItems = testSuites.map(testSuite => {
-    //   const label = path.basename(testSuite.toString()).replace('.testSuite-meta.xml', '');
-    //   testQuickPickItems.push(label);
-    //   return {
-    //     label,
-    //     description: testSuite.fsPath,
-    //     type: TestType.Suite
-    //   };
-    // });
-
-    // const apexClasses = await workspace.findFiles('**/*.cls');
-    // const apexClasses = await findFiles('**/*.cls', '**/node_modules/**');
-    // apexClasses.forEach(apexClass => {
-    //   const fd = fs.openSync(apexClass.fsPath, 'r');
-    //   const fileContent = fs.readFileSync(apexClass.fsPath).toString();
-    //   fs.closeSync(fd);
-
-    //   if (fileContent && fileContent.toLowerCase().includes('@istest')) {
-    //     const label = path.basename(apexClass.toString()).replace('.cls', '');
-    //     testQuickPickItems.push(label);
-    //     fileItems.push({
-    //       label,
-    //       description: apexClass.fsPath,
-    //       type: TestType.Class
-    //     });
-    //   }
-    // });
+    const fileItems  = [];
 
     testQuickPickItems.push('All');
     fileItems.push({

@@ -5,8 +5,8 @@ import {notificationService} from "../notifications";
 import {getRootWorkspacePath} from "../utils";
 import {CancellationTokenSource, CancellationToken} from "vscode-languageserver-protocol";
 import {channelService} from "../channels";
-import {EventEmitter} from "events";
-import {Command} from "../../salesforcedx-utils-vscode/src/cli/commandBuilder";
+import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/src/cli/commandBuilder";
+import {getTempFolder} from "../../salesforcedx-vscode-apex/src/utils";
 
 export interface CommandletExecutor<T> {
   execute(response: ContinueResponse<T>): void;
@@ -100,6 +100,24 @@ export abstract class SfdxCommandletExecutor<T> implements CommandletExecutor<T>
   // }
 
   public abstract build(data: T): Command;
+}
+
+export abstract class SfdxApexTestCommandletExecutor<T> extends SfdxCommandletExecutor<T> {
+
+  public build(data: T): Command {
+    const testMethodName =  this.getTestName(data);
+    const outputToJson = getTempFolder();
+    return new SfdxCommandBuilder()
+      .withDescription('Running Unit Tests for: ' + testMethodName)
+      .withArg('force:apex:test:run')
+      .withFlag('--tests', testMethodName)
+      .withFlag('--resultformat', 'human')
+      .withFlag('--outputdir', outputToJson)
+      .withFlag('--loglevel', 'error')
+      .withLogName('force_apex_test_run_code_action')
+      .build()
+  }
+  public abstract getTestName(data: T): string;
 }
 
 export class SfdxCommandlet<T> {
