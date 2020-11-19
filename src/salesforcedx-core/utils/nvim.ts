@@ -16,3 +16,11 @@ export async function getCurrentBufferBasename(): Promise<string> {
     return Promise.reject(null);
   }
 }
+
+export async function getCurrentLine(): Promise<string> {
+  try {
+    return workspace.nvim.getLine();
+  } catch (e) {
+    return Promise.reject(null);
+  }
+}
