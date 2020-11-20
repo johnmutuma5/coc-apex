@@ -13,6 +13,9 @@
     - `SFDX.run.apex.class.tests` - run all tests in the current buffer
     - `SFDX.run.apex.method.test` - run the test in the current line (cursor on the method name line)
     - `SFDX.run.apex.tests` - run all Apex tests
+    - `SFDX.Open.Default.Scratch.Org` - open default scratch org
+    - `SFDX.Push.Default.Scratch.Org` - push to default scratch org
+    - `SFDX.Pull.Default.Scratch.Org` - pull from default scratch org
     - More coming soon
 
 ## Installation
