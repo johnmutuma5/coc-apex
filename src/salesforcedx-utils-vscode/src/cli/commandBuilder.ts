@@ -40,7 +40,7 @@ export class CommandBuilder {
   }
 
   public withDescription(description: string): CommandBuilder {
-    this.description = description;
+    this.description = '\n' + description;
     return this;
   }
 
