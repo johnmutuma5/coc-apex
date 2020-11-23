@@ -56,7 +56,7 @@ class PushToSourceGatherer implements ParametersGatherer<CreateScratchOrgOptions
   }
 }
 
-class ForcePushDefaultOrgExecutor extends SfdxCommandletExecutor<CreateScratchOrgOptions> {
+class ForceCreateScratchOrgExecutor extends SfdxCommandletExecutor<CreateScratchOrgOptions> {
   public build(data: CreateScratchOrgOptions): Command {
     const builder = new SfdxCommandBuilder();
     builder 
@@ -81,7 +81,7 @@ export async function forceCreateScratchOrg() {
   const commandlet = new SfdxCommandlet(
     workspaceChecker,
     parameterGatherer,
-    new ForcePushDefaultOrgExecutor()
+    new ForceCreateScratchOrgExecutor()
   );
   await commandlet.run();
 }
