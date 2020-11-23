@@ -1,8 +1,8 @@
-import {SfdxCommandlet} from "../../../salesforcedx-core";
-import {ParametersGatherer, CancelResponse, ContinueResponse} from "../../../salesforcedx-utils-vscode";
-import {SfdxApexTestCommandletExecutor} from '../../../salesforcedx-core/commands';
-import {getCurrentBufferBasename} from '../../../salesforcedx-core/utils/nvim';
-import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
+import {SfdxCommandlet} from "../../salesforcedx-core";
+import {ParametersGatherer, CancelResponse, ContinueResponse} from "../../salesforcedx-utils-vscode";
+import {SfdxApexTestCommandletExecutor} from '../../salesforcedx-core/commands';
+import {getCurrentBufferBasename} from '../../salesforcedx-core/utils/nvim';
+import {SfdxWorkspaceChecker} from "../../salesforcedx-core/commands/utils";
 
 
 interface ApexTestClass {

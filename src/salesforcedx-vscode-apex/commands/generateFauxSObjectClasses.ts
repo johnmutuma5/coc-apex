@@ -1,13 +1,13 @@
-import {SfdxCommandBuilder, ParametersGatherer, ContinueResponse, LocalCommandExecution, CancelResponse} from "../../../salesforcedx-utils-vscode";
-import {SObjectRefreshSource, nls, FauxClassGenerator, SObjectCategory} from "../../../salesforcedx-sobjects-faux-generator";
-import {SfdxCommandletExecutor, SfdxCommandlet} from "../../../salesforcedx-core/commands";
-import {Command} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
-import {notificationService} from "../../../salesforcedx-core/notifications";
+import {SfdxCommandBuilder, ParametersGatherer, ContinueResponse, LocalCommandExecution, CancelResponse} from "../../salesforcedx-utils-vscode";
+import {SObjectRefreshSource, nls, FauxClassGenerator, SObjectCategory} from "../../salesforcedx-sobjects-faux-generator";
+import {SfdxCommandletExecutor, SfdxCommandlet} from "../../salesforcedx-core/commands";
+import {Command} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
+import {notificationService} from "../../salesforcedx-core/notifications";
 import {CancellationTokenSource} from "vscode-languageserver-protocol";
-import {channelService} from "../../../salesforcedx-core/channels";
-import {getRootWorkspacePath} from "../../../salesforcedx-core/utils";
+import {channelService} from "../../salesforcedx-core/channels";
+import {getRootWorkspacePath} from "../../salesforcedx-core/utils";
 import {workspace} from "coc.nvim";
-import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
+import {SfdxWorkspaceChecker} from "../../salesforcedx-core/commands/utils";
 
 const sfdxWorkspaceChecker = new SfdxWorkspaceChecker();
 export async function forceGenerateFauxClassesCreate(

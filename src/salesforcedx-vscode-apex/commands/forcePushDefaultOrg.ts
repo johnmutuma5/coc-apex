@@ -1,10 +1,10 @@
 import {workspace} from "coc.nvim";
-import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
-import {SfdxCommandlet} from "../../../salesforcedx-core";
-import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../../salesforcedx-utils-vscode";
-import {SfdxCommandletExecutor} from "../../../salesforcedx-core/commands";
-import {Command, SfdxCommandBuilder} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
-import {SOURCE_CONFLICTS_OVERWRITE_PROMPT} from "../../../salesforcedx-core/constants";
+import {SfdxWorkspaceChecker} from "../../salesforcedx-core/commands/utils";
+import {SfdxCommandlet} from "../../salesforcedx-core";
+import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../salesforcedx-utils-vscode";
+import {SfdxCommandletExecutor} from "../../salesforcedx-core/commands";
+import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
+import {SOURCE_CONFLICTS_OVERWRITE_PROMPT} from "../../salesforcedx-core/constants";
 
 interface SourcePushOptions {
   forcePush: boolean;

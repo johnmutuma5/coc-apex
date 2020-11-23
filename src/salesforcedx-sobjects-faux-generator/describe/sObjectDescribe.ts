@@ -13,7 +13,7 @@ import {
   CommandOutput,
   SfdxCommandBuilder,
   extractJsonObject 
-} from '../../../salesforcedx-utils-vscode';
+} from '../../salesforcedx-utils-vscode';
 import { CLIENT_ID } from '../constants';
 
 export interface SObject {

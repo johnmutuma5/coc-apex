@@ -1,6 +1,6 @@
 import { ExtensionContext, LanguageClient, commands } from 'coc.nvim';
 import { SObjectRefreshSource } from './salesforcedx-sobjects-faux-generator';
-import * as languageServer from './salesforcedx-vscode-apex/src/languageServer';
+import * as languageServer from './salesforcedx-vscode-apex/languageServer';
 import {SfdxWorkspaceChecker} from './salesforcedx-core/commands/utils';
 import {
   forceGenerateFauxClassesCreate,
@@ -13,7 +13,7 @@ import {
   forceGeneratePassword,
   forceDisplayPassword,
   forceCreateScratchOrg
-  } from './salesforcedx-vscode-apex/src/commands';
+  } from './salesforcedx-vscode-apex/commands';
 
 
 let languageClient: LanguageClient | undefined;

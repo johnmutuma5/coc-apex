@@ -1,8 +1,8 @@
 import * as glob from 'glob';
 import { promisify } from 'util';
 import {Uri} from 'coc.nvim';
-import {hasRootWorkspace, getRootWorkspacePath} from '../../../salesforcedx-core/utils';
-import {TestRunner} from '../../../salesforcedx-utils-vscode';
+import {hasRootWorkspace, getRootWorkspacePath} from '../../salesforcedx-core/utils';
+import {TestRunner} from '../../salesforcedx-utils-vscode';
 import {nls} from '../messages';
  
 const globFiles = promisify(glob);

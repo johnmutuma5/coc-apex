@@ -6,9 +6,9 @@ export {
   SFDX_CONFIG_ISV_DEBUGGER_URL,
   DEFAULT_CONNECTION_TIMEOUT_MS,
   CLIENT_ID
-} from './src/constants';
+} from './constants';
 
-export * from './src/types';
-export * from './src/cli';
-export * from './src/helpers';
-export * from './src/i18n';
+export * from './types';
+export * from './cli';
+export * from './helpers';
+export * from './i18n';

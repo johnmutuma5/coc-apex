@@ -1,10 +1,10 @@
 import * as path from 'path';
 import {workspace} from "coc.nvim";
-import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
-import {SfdxCommandlet} from "../../../salesforcedx-core";
-import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../../salesforcedx-utils-vscode";
-import {SfdxCommandletExecutor} from "../../../salesforcedx-core/commands";
-import {Command, SfdxCommandBuilder} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
+import {SfdxWorkspaceChecker} from "../../salesforcedx-core/commands/utils";
+import {SfdxCommandlet} from "../../salesforcedx-core";
+import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../salesforcedx-utils-vscode";
+import {SfdxCommandletExecutor} from "../../salesforcedx-core/commands";
+import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
 import {
   SCRATCH_ORG_ALIAS_PROMPT,
   SCRATCH_ORG_CONFIG_PROMPT,
@@ -13,8 +13,8 @@ import {
   SCRATCH_ORG_DURATION_PROMPT,
   SCRATCH_ORG_DURATION,
   SCRATCH_ORG_AS_DEFAULT_PROMPT
-} from "../../../salesforcedx-core/constants";
-import {getRootWorkspacePath} from "../../../salesforcedx-core/utils";
+} from "../../salesforcedx-core/constants";
+import {getRootWorkspacePath} from "../../salesforcedx-core/utils";
 
 interface CreateScratchOrgOptions {
   duration: string;
