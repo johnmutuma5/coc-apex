@@ -1,6 +1,6 @@
 import { ExtensionContext, LanguageClient, commands } from 'coc.nvim';
 import { SObjectRefreshSource } from './salesforcedx-sobjects-faux-generator';
-import * as languageServer from './salesforcedx-vscode-apex/src/languageServer';
+import * as languageServer from './salesforcedx-vscode-apex/languageServer';
 import {SfdxWorkspaceChecker} from './salesforcedx-core/commands/utils';
 import {
   forceGenerateFauxClassesCreate,
@@ -9,8 +9,11 @@ import {
   forceApexTestRun,
   forceOpenDefaultOrg,
   forcePushDefaultOrg,
-  forcePullDefaultOrg
-  } from './salesforcedx-vscode-apex/src/commands';
+  forcePullDefaultOrg,
+  forceGeneratePassword,
+  forceDisplayPassword,
+  forceCreateScratchOrg
+  } from './salesforcedx-vscode-apex/commands';
 
 
 let languageClient: LanguageClient | undefined;
@@ -30,6 +33,9 @@ export async function activate(context: ExtensionContext) {
       commands.registerCommand('SFDX.Open.Default.Scratch.Org', forceOpenDefaultOrg),
       commands.registerCommand('SFDX.Push.Default.Scratch.Org', forcePushDefaultOrg),
       commands.registerCommand('SFDX.Pull.Default.Scratch.Org', forcePullDefaultOrg),
+      commands.registerCommand('SFDX.Generate.Password.Default.Scratch.Org', forceGeneratePassword),
+      commands.registerCommand('SFDX.Display.Password.Default.Scratch.Org', forceDisplayPassword),
+      commands.registerCommand('SFDX.Create.Scratch.Org', forceCreateScratchOrg),
       languageClient.start()
     );
   }

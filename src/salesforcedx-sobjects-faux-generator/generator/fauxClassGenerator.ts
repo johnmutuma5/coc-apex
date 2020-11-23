@@ -6,7 +6,7 @@
  */
 import { workspace, Neovim } from 'coc.nvim';
 import { AuthInfo, Connection } from '@salesforce/core';
-import { SFDX_PROJECT_FILE, LocalCommandExecution  } from '../../../salesforcedx-utils-vscode';
+import { SFDX_PROJECT_FILE, LocalCommandExecution  } from '../../salesforcedx-utils-vscode';
 import { EventEmitter } from 'events';
 import * as fs from 'fs';
 import { EOL } from 'os';
@@ -27,10 +27,8 @@ import {
   SObjectDescribe
 } from '../describe';
 import { ConfigUtil } from '../describe/configUtil';
-import { nls } from '../../';
-import {notificationService} from '../../../salesforcedx-core/notifications';
-import {channelService} from '../../../salesforcedx-core/channels';
-import {ChannelService} from '../../../salesforcedx-core/channels/channelService';
+import {notificationService} from '../../salesforcedx-core/notifications';
+import {nls} from '../messages';
 
 export const INDENT = '    ';
 const MODIFIER = 'global';

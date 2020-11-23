@@ -10,8 +10,7 @@ export async function getCurrentBufferBasename(): Promise<string> {
   try {
     const currentBuffer =  await workspace.nvim.buffer;
     const filePath = Uri.parse(await currentBuffer.name).fsPath;
-    const className = path.basename(filePath).replace(path.extname(filePath), '');
-    return Promise.resolve(className);
+    return  path.basename(filePath).replace(path.extname(filePath), '');
   } catch (e) {
     return Promise.reject(null);
   }

@@ -4,7 +4,7 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-export { CLIENT_ID, SFDX_DIR, SOBJECTS_DIR, TOOLS_DIR } from './src/constants';
-export * from './src/describe';
-export * from './src/messages';
-export * from './src/generator';
+export { CLIENT_ID, SFDX_DIR, SOBJECTS_DIR, TOOLS_DIR } from './constants';
+export * from './describe';
+export * from './messages';
+export * from './generator';

@@ -34,6 +34,13 @@ export const TELEMETRY_ENABLED = 'telemetry.enabled';
 export const USE_APEX_LIBRARY = 'experimental.useApexLibrary';
 export const FUNCTIONS_ENABLED = 'experimental.supportFunctions';
 export const USE_TEMPLATES_LIBRARY = 'experimental.useTemplatesLibrary';
-export const FUNCTIONS_INSTALL_DEPENDENCIES =
-  'experimental.functions_install_dependencies';
+export const FUNCTIONS_INSTALL_DEPENDENCIES = 'experimental.functions_install_dependencies';
 
+export const SCRATCH_ORG_ALIAS_PROMPT = 'Please enter an alias for the new scratch org(Return blank to Cancel)';
+export const SCRATCH_ORG_CONFIG_PROMPT = 'Provide the org config file: ';
+export const SCRATCH_ORG_DEFINITION_FILE = 'project-scratch-def.json';
+export const SCRATCH_ORG_CONFIG_DIR = 'config';
+export const SCRATCH_ORG_DURATION_PROMPT = 'Enter duration until expiry';
+export const SCRATCH_ORG_DURATION = '30';
+export const SCRATCH_ORG_AS_DEFAULT_PROMPT = 'Do you wish to make it default scratch org?';
+export const SOURCE_CONFLICTS_OVERWRITE_PROMPT = 'Do you wish to overwrite source conflicts, if any?';

@@ -1,9 +1,9 @@
-import {SfdxCommandletExecutor, SfdxCommandlet} from "../../../salesforcedx-core/commands";
-import {Command, SfdxCommandBuilder} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
-import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
-import {nls} from "../../../salesforcedx-sobjects-faux-generator";
+import {SfdxCommandletExecutor, SfdxCommandlet} from "../../salesforcedx-core/commands";
+import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
+import {SfdxWorkspaceChecker} from "../../salesforcedx-core/commands/utils";
+import {nls} from "../../salesforcedx-sobjects-faux-generator";
 import {QuickPickItem} from "vscode";
-import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../../salesforcedx-utils-vscode";
+import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../salesforcedx-utils-vscode";
 import {workspace} from "coc.nvim";
 import {getTempFolder} from '../utils';
 

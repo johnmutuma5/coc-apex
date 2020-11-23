@@ -5,8 +5,8 @@ import {notificationService} from "../notifications";
 import {getRootWorkspacePath} from "../utils";
 import {CancellationTokenSource, CancellationToken} from "vscode-languageserver-protocol";
 import {channelService} from "../channels";
-import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/src/cli/commandBuilder";
-import {getTempFolder} from "../../salesforcedx-vscode-apex/src/utils";
+import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
+import {getTempFolder} from "../../salesforcedx-vscode-apex/utils";
 
 export interface CommandletExecutor<T> {
   execute(response: ContinueResponse<T>): void;
