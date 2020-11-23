@@ -4,6 +4,7 @@ import {SfdxCommandlet} from "../../../salesforcedx-core";
 import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../../salesforcedx-utils-vscode";
 import {SfdxCommandletExecutor} from "../../../salesforcedx-core/commands";
 import {Command, SfdxCommandBuilder} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
+import {SOURCE_CONFLICTS_OVERWRITE_PROMPT} from "../../../salesforcedx-core/constants";
 
 interface SourcePullOptions {
   forcePull: boolean;
@@ -11,7 +12,7 @@ interface SourcePullOptions {
 
 class PullFromSourceGatherer implements ParametersGatherer<SourcePullOptions> {
   public async gather(): Promise<CancelResponse | ContinueResponse<SourcePullOptions>> {
-    const forcePull = await workspace.showPrompt('Do you wish to overwrite source conflicts, if any?')
+    const forcePull = await workspace.showPrompt(SOURCE_CONFLICTS_OVERWRITE_PROMPT);
     return {
       type: 'CONTINUE',
       data: {

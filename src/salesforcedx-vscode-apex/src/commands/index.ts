@@ -5,3 +5,7 @@ export { forceOpenDefaultOrg } from './forceOpenDefaultOrg';
 export { forcePushDefaultOrg } from './forcePushDefaultOrg';
 export { forcePullDefaultOrg } from './forcePullDefaultOrg';
 export { forceApexTestRun } from './forceApexTestRun';
+export { forceGeneratePassword } from './forceGeneratePassword';
+export { forceDisplayPassword } from './forceDisplayPassword';
+export { forceCreateScratchOrg } from './forceCreateScratchOrg';
+
