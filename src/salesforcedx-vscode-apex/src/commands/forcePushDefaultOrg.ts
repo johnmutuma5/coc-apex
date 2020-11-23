@@ -3,19 +3,41 @@ import {SfdxCommandlet} from "../../../salesforcedx-core";
 import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../../salesforcedx-utils-vscode";
 import {SfdxCommandletExecutor} from "../../../salesforcedx-core/commands";
 import {Command, SfdxCommandBuilder} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
-import ContinueGatherer from "./emptyContinue";
+import {workspace} from "coc.nvim";
 
-class ForcePushDefaultOrgExecutor extends SfdxCommandletExecutor<null> {
-  public build(data: null): Command {
-    return new SfdxCommandBuilder()
+interface SourcePushOptions {
+  forcePush: boolean;
+}
+
+class PushToSourceGatherer implements ParametersGatherer<SourcePushOptions> {
+  public async gather(): Promise<CancelResponse | ContinueResponse<SourcePushOptions>> {
+    const forcePush = await workspace.showPrompt('Do you wish to overwrite source conflicts, if any?')
+    return {
+      type: 'CONTINUE',
+      data: {
+        forcePush
+      }
+    };
+  }
+}
+
+class ForcePushDefaultOrgExecutor extends SfdxCommandletExecutor<SourcePushOptions> {
+  public build(data: SourcePushOptions): Command {
+    const builder = new SfdxCommandBuilder();
+    builder 
       .withDescription('Pushing to Default Scratch Org')
       .withArg('force:source:push')
-      .build();
+
+    if(data.forcePush) {
+      builder.withArg('--forceoverwrite')
+    }
+
+    return builder.build();
   }
 }
 
 const workspaceChecker = new SfdxWorkspaceChecker();
-const parameterGatherer = new ContinueGatherer();
+const parameterGatherer = new PushToSourceGatherer();
 
 export async function forcePushDefaultOrg() {
   const commandlet = new SfdxCommandlet(
