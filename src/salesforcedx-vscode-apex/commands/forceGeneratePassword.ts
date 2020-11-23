@@ -9,7 +9,7 @@ class ForceGeneratePasswordExecutor extends SfdxCommandletExecutor<null> {
   public build(data: null): Command {
     return new SfdxCommandBuilder()
       .withDescription('Generating Password for Default Scratch Org')
-      .withArg('force:org:generate')
+      .withArg('force:user:password:generate')
       .build();
   }
 }

@@ -9,7 +9,7 @@ class ForceDisplayPasswordExecutor extends SfdxCommandletExecutor<null> {
   public build(data: null): Command {
     return new SfdxCommandBuilder()
       .withDescription('Displaying password for Default Scratch Org')
-      .withArg('force:org:display')
+      .withArg('force:user:display')
       .build();
   }
 }
