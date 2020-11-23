@@ -1,9 +1,9 @@
+import {workspace} from "coc.nvim";
 import {SfdxWorkspaceChecker} from "../../../salesforcedx-core/commands/utils";
 import {SfdxCommandlet} from "../../../salesforcedx-core";
 import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../../salesforcedx-utils-vscode";
 import {SfdxCommandletExecutor} from "../../../salesforcedx-core/commands";
 import {Command, SfdxCommandBuilder} from "../../../salesforcedx-utils-vscode/src/cli/commandBuilder";
-import {workspace} from "coc.nvim";
 
 interface SourcePushOptions {
   forcePush: boolean;
