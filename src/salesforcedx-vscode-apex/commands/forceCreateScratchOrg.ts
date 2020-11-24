@@ -36,7 +36,7 @@ class PushToSourceGatherer implements ParametersGatherer<CreateScratchOrgOptions
 
     const projectPath = getRootWorkspacePath();
     const defaultConfigFilePath = path.resolve(projectPath, SCRATCH_ORG_CONFIG_DIR, SCRATCH_ORG_DEFINITION_FILE);
-    const configFile = await workspace.requestInput(SCRATCH_ORG_CONFIG_PROMPT, `"${defaultConfigFilePath}"`);
+    const configFile = await workspace.requestInput(SCRATCH_ORG_CONFIG_PROMPT, defaultConfigFilePath);
     if(!configFile) {
       return {
         type: 'CANCEL'
