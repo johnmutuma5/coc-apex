@@ -4,6 +4,7 @@ import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../salesf
 import {SfdxCommandletExecutor} from "../../salesforcedx-core/commands";
 import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
 import ContinueGatherer from "./emptyContinue";
+import {CliLogLevel} from "../../salesforcedx-core/model/cliLogLevels";
 
 
 class ForceOpenDefaultOrgExecutor extends SfdxCommandletExecutor<null> {
@@ -11,6 +12,7 @@ class ForceOpenDefaultOrgExecutor extends SfdxCommandletExecutor<null> {
     return new SfdxCommandBuilder()
       .withDescription('Opening Default Scratch Org')
       .withArg('force:org:open')
+      .withFlag('--loglevel', CliLogLevel.DEBUG)
       .build();
   }
 }

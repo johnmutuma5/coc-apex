@@ -3,6 +3,7 @@ import {SfdxCommandlet} from "../../salesforcedx-core";
 import {SfdxCommandletExecutor} from "../../salesforcedx-core/commands";
 import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
 import ContinueGatherer from "./emptyContinue";
+import {CliLogLevel} from "../../salesforcedx-core/model/cliLogLevels";
 
 
 class ForceGeneratePasswordExecutor extends SfdxCommandletExecutor<null> {
@@ -10,6 +11,7 @@ class ForceGeneratePasswordExecutor extends SfdxCommandletExecutor<null> {
     return new SfdxCommandBuilder()
       .withDescription('Generating Password for Default Scratch Org')
       .withArg('force:user:password:generate')
+      .withFlag('--loglevel', CliLogLevel.DEBUG)
       .build();
   }
 }

@@ -15,6 +15,7 @@ import {
   SCRATCH_ORG_AS_DEFAULT_PROMPT
 } from "../../salesforcedx-core/constants";
 import {getRootWorkspacePath} from "../../salesforcedx-core/utils";
+import {CliLogLevel} from '../../salesforcedx-core/model/cliLogLevels';
 
 interface CreateScratchOrgOptions {
   duration: string;
@@ -65,6 +66,7 @@ class ForceCreateScratchOrgExecutor extends SfdxCommandletExecutor<CreateScratch
       .withFlag('--definitionfile', data.configFile)
       .withFlag('--durationdays', data.duration)
       .withFlag('--setalias', data.scratchOrgAlias)
+      .withFlag('--loglevel', CliLogLevel.DEBUG);
 
     if(data.setDefaultOrg) {
       builder.withArg('--setdefaultusername')

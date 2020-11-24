@@ -5,18 +5,19 @@ import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../salesf
 import {SfdxCommandletExecutor} from "../../salesforcedx-core/commands";
 import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
 import {SOURCE_CONFLICTS_OVERWRITE_PROMPT} from "../../salesforcedx-core/constants";
+import {CliLogLevel} from "../../salesforcedx-core/model/cliLogLevels";
 
 interface SourcePullOptions {
-  forcePull: boolean;
+  forceOverwrite: boolean;
 }
 
 class PullFromSourceGatherer implements ParametersGatherer<SourcePullOptions> {
   public async gather(): Promise<CancelResponse | ContinueResponse<SourcePullOptions>> {
-    const forcePull = await workspace.showPrompt(SOURCE_CONFLICTS_OVERWRITE_PROMPT);
+    const forceOverwrite = await workspace.showPrompt(SOURCE_CONFLICTS_OVERWRITE_PROMPT);
     return {
       type: 'CONTINUE',
       data: {
-        forcePull
+        forceOverwrite
       }
     };
   }
@@ -28,8 +29,9 @@ class ForcePullDefaultOrgExecutor extends SfdxCommandletExecutor<SourcePullOptio
     builder 
       .withDescription('Pulling from Default Scratch Org')
       .withArg('force:source:pull')
+      .withFlag('--loglevel', CliLogLevel.DEBUG)
 
-    if(data.forcePull) {
+    if(data.forceOverwrite) {
       builder.withArg('--forceoverwrite')
     }
 
