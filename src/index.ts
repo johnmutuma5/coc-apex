@@ -12,7 +12,8 @@ import {
   forcePullDefaultOrg,
   forceGeneratePassword,
   forceDisplayPassword,
-  forceCreateScratchOrg
+  forceCreateScratchOrg,
+  forceCreateApexClass
   } from './salesforcedx-vscode-apex/commands';
 
 
@@ -36,6 +37,7 @@ export async function activate(context: ExtensionContext) {
       commands.registerCommand('SFDX.Generate.Password.Default.Scratch.Org', forceGeneratePassword),
       commands.registerCommand('SFDX.Display.Password.Default.Scratch.Org', forceDisplayPassword),
       commands.registerCommand('SFDX.Create.Scratch.Org', forceCreateScratchOrg),
+      commands.registerCommand('SFDX.Create.Apex.Class', forceCreateApexClass),
       languageClient.start()
     );
   }

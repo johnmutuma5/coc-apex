@@ -10,15 +10,16 @@
 
 - Registers IDE commands in Vim/NeoVim enviroment: `:CocCommand`
     - `SFDX.Refresh.SObject` - pulls definitions for SObject fields from the **default** scratch org. You can Go To Definition for SObject fields after this is done. Be sure to set preferred default org
-    - `SFDX.run.apex.class.tests` - run all tests in the current buffer
-    - `SFDX.run.apex.method.test` - run the test in the current line (cursor on the method name line)
-    - `SFDX.run.apex.tests` - run all Apex tests
+    - `SFDX.Run.Apex.Class.Tests` - run all tests in the current buffer
+    - `SFDX.Run.Apex.Method.Test` - run the test in the current line (cursor on the method name line)
+    - `SFDX.Run.Apex.Tests` - run all Apex tests
     - `SFDX.Open.Default.Scratch.Org` - open default scratch org
     - `SFDX.Push.Default.Scratch.Org` - push to default scratch org
     - `SFDX.Pull.Default.Scratch.Org` - pull from default scratch org
     - `SFDX.Generate.Password.Default.Scratch.Org` - generate password for default scratch org
     - `SFDX.Display.Password.Default.Scratch.Org` - display password for default scratch org
     - `SFDX.Create.Scratch.Org` - create a new scratch org
+    - `SFDX.Create.Apex.Class` - create a new Apex class
     - More coming soon
 
 ## Installation

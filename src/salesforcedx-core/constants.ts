@@ -44,3 +44,7 @@ export const SCRATCH_ORG_DURATION_PROMPT = 'Enter duration until expiry';
 export const SCRATCH_ORG_DURATION = '30';
 export const SCRATCH_ORG_AS_DEFAULT_PROMPT = 'Do you wish to make it default scratch org?';
 export const SOURCE_CONFLICTS_OVERWRITE_PROMPT = 'Do you wish to overwrite source conflicts, if any?';
+export const DEFAULT_APEX_CLASS = 'DefaultApexClass';
+export const CLASS_TEMPLATE_PROMPT = 'Enter class template(ApexException|ApexUnitTest|DefaultApexClass|InboundEmailService)';
+export const CLASS_OUTPUT_DIR_PROMPT = 'Enter output directory for the class: ';
+export const CLASS_NAME_PROMPT = 'Enter class name';
