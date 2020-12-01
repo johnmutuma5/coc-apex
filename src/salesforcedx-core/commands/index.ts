@@ -111,6 +111,7 @@ export abstract class SfdxApexTestCommandletExecutor<T> extends SfdxCommandletEx
     return new SfdxCommandBuilder()
       .withDescription('Running Unit Tests for: ' + testMethodName)
       .withArg('force:apex:test:run')
+      .withArg('--codecoverage')
       .withFlag('--tests', testMethodName)
       .withFlag('--resultformat', 'human')
       .withFlag('--outputdir', outputToJson)

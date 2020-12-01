@@ -142,6 +142,7 @@ export async function createLanguageServer(
       configurationSection: 'apexcode',
       fileEvents: [
         workspace.createFileSystemWatcher('**/*.cls'), // Apex classes
+        workspace.createFileSystemWatcher('**/*.apex'), // Apex classes
         workspace.createFileSystemWatcher('**/*.trigger'), // Apex triggers
         workspace.createFileSystemWatcher('**/sfdx-project.json') // SFDX workspace configuration file
       ]

@@ -9,4 +9,6 @@ export { forceGeneratePassword } from './forceGeneratePassword';
 export { forceDisplayPassword } from './forceDisplayPassword';
 export { forceCreateScratchOrg } from './forceCreateScratchOrg';
 export { forceCreateApexClass } from './forceCreateApexClass';
+export { forceRunAnonymousApex } from './forceRunAnonymousApex';
+
 

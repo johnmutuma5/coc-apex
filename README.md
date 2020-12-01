@@ -20,6 +20,7 @@
     - `SFDX.Display.Password.Default.Scratch.Org` - display password for default scratch org
     - `SFDX.Create.Scratch.Org` - create a new scratch org
     - `SFDX.Create.Apex.Class` - create a new Apex class
+    - `SFDX.Exec.Anonymous.Apex` - execute apex anonymous apex
     - More coming soon
 
 ## Installation
