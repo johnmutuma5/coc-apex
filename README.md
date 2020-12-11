@@ -21,6 +21,7 @@
     - `SFDX.Create.Scratch.Org` - create a new scratch org
     - `SFDX.Create.Apex.Class` - create a new Apex class
     - `SFDX.Exec.Anonymous.Apex` - execute apex anonymous apex
+    - `SFDX.Exec.SOQL.Under.Cursor` - execute SOQL line under cursor
     - More coming soon
 
 ## Installation

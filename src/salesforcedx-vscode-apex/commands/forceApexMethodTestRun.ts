@@ -12,7 +12,6 @@ interface ApexTestMethod {
 class TestMethodSelector {
   async gather(): Promise<CancelResponse | ContinueResponse<ApexTestMethod>> {
     const currentLine = (await getCurrentLine());
-    console.log('Current Line: ', currentLine);
     const testMethod = currentLine.match(/void\s+(\w+)\s*\(/i)[1];
 
     return {

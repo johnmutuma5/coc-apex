@@ -7,8 +7,7 @@ import {getRootWorkspacePath} from "../../salesforcedx-core/utils";
 import {CancelResponse, ContinueResponse, ParametersGatherer} from "../../salesforcedx-utils-vscode";
 import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
 import {CliLogLevel} from '../../salesforcedx-core/model/cliLogLevels';
-
-const DEFAULT_ANONYMOUS_APEX_FILE = 'scripts/apex/hello.apex';
+import {DEFAULT_ANONYMOUS_APEX_FILE} from '../../salesforcedx-core/constants';
 
 interface ExecuteAnonymousApexOptions {
   apexCodeFile: string;
