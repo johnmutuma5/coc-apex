@@ -12,7 +12,10 @@ import {
   forcePullDefaultOrg,
   forceGeneratePassword,
   forceDisplayPassword,
-  forceCreateScratchOrg
+  forceCreateScratchOrg,
+  forceCreateApexClass,
+  forceRunAnonymousApex,
+  forceExecSoql
   } from './salesforcedx-vscode-apex/commands';
 
 
@@ -36,6 +39,9 @@ export async function activate(context: ExtensionContext) {
       commands.registerCommand('SFDX.Generate.Password.Default.Scratch.Org', forceGeneratePassword),
       commands.registerCommand('SFDX.Display.Password.Default.Scratch.Org', forceDisplayPassword),
       commands.registerCommand('SFDX.Create.Scratch.Org', forceCreateScratchOrg),
+      commands.registerCommand('SFDX.Create.Apex.Class', forceCreateApexClass),
+      commands.registerCommand('SFDX.Exec.Anonymous.Apex', forceRunAnonymousApex),
+      commands.registerCommand('SFDX.Exec.SOQL.Under.Cursor', forceExecSoql),
       languageClient.start()
     );
   }

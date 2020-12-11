@@ -7,6 +7,7 @@ import {CancellationTokenSource, CancellationToken} from "vscode-languageserver-
 import {channelService} from "../channels";
 import {Command, SfdxCommandBuilder} from "../../salesforcedx-utils-vscode/cli/commandBuilder";
 import {getTempFolder} from "../../salesforcedx-vscode-apex/utils";
+import {CliLogLevel} from "../model/cliLogLevels";
 
 export interface CommandletExecutor<T> {
   execute(response: ContinueResponse<T>): void;
@@ -110,10 +111,11 @@ export abstract class SfdxApexTestCommandletExecutor<T> extends SfdxCommandletEx
     return new SfdxCommandBuilder()
       .withDescription('Running Unit Tests for: ' + testMethodName)
       .withArg('force:apex:test:run')
+      .withArg('--codecoverage')
       .withFlag('--tests', testMethodName)
       .withFlag('--resultformat', 'human')
       .withFlag('--outputdir', outputToJson)
-      .withFlag('--loglevel', 'error')
+      .withFlag('--loglevel', CliLogLevel.DEBUG)
       .withLogName('force_apex_test_run_code_action')
       .build()
   }

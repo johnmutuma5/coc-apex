@@ -20,6 +20,6 @@ export async function getCurrentLine(): Promise<string> {
   try {
     return workspace.nvim.getLine();
   } catch (e) {
-    return Promise.reject(null);
+    return Promise.reject(e);
   }
 }

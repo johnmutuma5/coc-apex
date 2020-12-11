@@ -6,6 +6,7 @@ import {QuickPickItem} from "vscode";
 import {ParametersGatherer, ContinueResponse, CancelResponse} from "../../salesforcedx-utils-vscode";
 import {workspace} from "coc.nvim";
 import {getTempFolder} from '../utils';
+import {CliLogLevel} from "../../salesforcedx-core/model/cliLogLevels";
 
 export enum TestType {
   All,
@@ -65,7 +66,7 @@ export class ForceApexTestRunCommandFactory {
     this.builder = this.builder
       .withFlag('--resultformat', 'human')
       .withFlag('--outputdir', this.outputToJson)
-      .withFlag('--loglevel', 'error');
+      .withFlag('--loglevel', CliLogLevel.DEBUG);
 
     this.testRunExecutorCommand = this.builder.build();
     return this.testRunExecutorCommand;
