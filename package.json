@@ -54,6 +54,12 @@
     "request-light": "0.2.4",
     "typescript": "3.7.5"
   },
+  "snippets": [
+    {
+      "language": "apexcode",
+      "path": "./snippets/apexcode.snippets"
+    }
+  ],
   "scripts": {
     "compile": "tsc -b tsconfig.json",
     "lint": "tslint --project .",

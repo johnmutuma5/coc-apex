@@ -1,0 +1,273 @@
+snippet class "Class"
+${1|global,public,private|} with sharing class ${2:MyClass} {
+	$0
+}
+endsnippet
+
+snippet interface "Interface"
+${1|global,public,private|} interface ${2:MyInterface} {
+	$0
+}
+endsnippet
+
+snippet enum "Enum"
+${1|global,public,private|} enum ${2:MyEnum} {
+	$0
+}
+endsnippet
+
+snippet debug "System.debug"
+System.debug($0)
+endsnippet
+
+snippet sysassf "System.assert(false, message);"
+System.assert(false, ${1:message});
+endsnippet
+
+snippet sysasseq "System.assertEquals(expected, actual);"
+System.assertEquals(${1:expected}, ${2:actual});
+endsnippet
+
+snippet sysassnoteq "System.assertNotEquals(expected, actual);"
+System.assertNotEquals(${1:expected}, ${2:actual});
+endsnippet
+
+snippet sysassnull "System.assertEquals(null, actual);"
+System.assertEquals(null, ${1:actual});
+endsnippet
+
+snippet sysassnotnull "System.assertNotEquals(null, actual);"
+System.assertNotEquals(null, ${1:actual});
+endsnippet
+
+snippet dfr "Get DescribeFieldResult"
+${1:SObjectType}.SObjectType.fields.${2:SObjectField}.getDescribe()
+endsnippet
+
+snippet dsr "Get DescribeSObjectResult"
+${1:SObjectType}.SObjectType.getDescribe()
+endsnippet
+
+snippet fail "False assertion"
+System.assert(false, $0)
+endsnippet
+
+snippet do "do...while loop"
+do {
+	$0
+} while (${1:condition});
+endsnippet
+
+snippet while "do...while loop"
+while (${1:condition}) {
+	$0
+}
+endsnippet
+
+snippet for "for loop"
+for (${1:type} ${2:variable} : ${3:List_or_set}) {
+	$0
+}
+endsnippet
+
+snippet fors "for loop"
+for (${1:SObject} ${2:variable} : [${3:SOQL}]) {
+	$0
+}
+endsnippet
+
+snippet forr "Reverse for loop"
+for (Integer ${1:i} = ${2:length} - 1; ${1:i} >= 0 ; ${1:i}--) {
+	$0
+}
+endsnippet
+
+snippet fori "indexed for loop"
+for (Integer ${1:i} = 0; ${1:i} < ${2:length}; ${1:i}++) {
+	$0
+}
+endsnippet
+
+snippet formap "For loop to iterate over a map"
+for(${1:Object} ${2:key} : ${3:map}.keySet()){ {
+	${1:Object} ${4:item} = ${3}.get(${1});
+	$0
+}
+endsnippet
+
+snippet if "if statement"
+if (${1:condition}) {
+	$0
+}
+endsnippet
+
+snippet ifelse "if/else statement"
+if (${1:condition}) {
+	$2
+} else {
+	$0
+}
+endsnippet
+
+snippet else "Else statement"
+else {
+	$0
+}
+endsnippet
+
+snippet ifnull "if null statement"
+if (${1:condition} == null) {
+	$0
+}
+endsnippet
+
+snippet ifnotnull "if not null statement"
+if (${1:condition} != null) {
+	$0
+}
+endsnippet
+
+snippet ter "x ? y : z;"
+${1:condition} ? ${2:exprIfTrue} : ${3:exprIfFalse};
+endsnippet
+
+snippet constructor "New constructor"
+${1:|private,public,global|} ${2:${TM_FILENAME_BASE}}($3) {
+	${0:super();}
+}
+endsnippet
+
+snippet newobj "New Object"
+${1:Object} ${2:var} = new ${1:Object}();
+endsnippet
+
+snippet field "Field"
+${1:|private,public,global|} ${2:String} ${3:name};
+endsnippet
+
+snippet method "New method"
+${1:|private,public,global|} ${2:void} ${3:name}($4) {
+	$0
+}
+endsnippet
+
+snippet staticmethod "New static method"
+${1:|private,public,global|} static ${2:void} ${3:name}($4) {
+	$0
+}
+endsnippet
+
+snippet tryf "Try finally"
+try {
+	$1
+} finally {
+	$0
+}
+endsnippet
+
+snippet try "Try catch"
+try {
+	$1
+} catch (${2:Exception}) {
+	$0
+}
+endsnippet
+
+snippet trycf "Try catch finally"
+try {
+	$1
+} catch (${2:Exception}) {
+	$3
+} finally {
+	$0
+}
+endsnippet
+
+snippet switch "Switch statement"
+switch on ${1:switch_on} {
+	when $2 {
+		$3
+	}
+	when else {
+		$0
+	}
+}
+endsnippet
+
+snippet throw "Throw a new exception"
+throw new ${1:Exception}($0)
+endsnippet
+
+snippet List "List constructor"
+List<${1:Object}> ${2:listName} = new List<$1>();
+endsnippet
+
+snippet Map "Map constructor"
+Map<${1:Object}, ${2:Object}> ${3:mapName} = new Map<$1, $2>();
+endsnippet
+
+snippet mapfromrecordlist "Map from List of records"
+Map<Id, ${1:SObject}> ${2:variable} = new Map<Id, ${1}>(${3:recordList});
+endsnippet
+
+snippet Set "Set constructor"
+Set<${1:Object}> ${2:setName} = new Set<$1>();
+endsnippet
+
+snippet setidsfromrecordlist "Set of Ids from List of records"
+Set<Id> ${1:variable} = new Map<Id, SObject>(${2:recordList}).keySet();
+endsnippet
+
+snippet @AuraEnabled "Aura Enabled Apex Method with Aura safe exception handling."
+@AuraEnabled
+${1|public,global|} static ${2:string} ${3:methodName}(){
+	try {
+		$0
+	} catch (Exception e) {
+		throw new AuraHandledException(e.getMessage());
+	}
+}
+endsnippet
+
+snippet auraHandledException "Throw an exception for a lightning component to display"
+throw new AuraHandledException('${1:exceptionText}');
+endsnippet
+
+snippet testMethod "Test method with runAs and stop/start"
+@IsTest
+static void ${1:methodName}(){
+	
+	Test.startTest();
+	System.runAs(${2:contextuser}){
+		$0
+	}
+	Test.stopTest();
+	
+}
+endsnippet
+
+snippet @TestSetup "Test setup for creating data before test methods run"
+@TestSetup
+static void ${1:makeData}(){
+	
+}
+endsnippet
+
+snippet customException "Class"
+${1|global,public,private|} class ${2:MyException} extends Exception {
+	$0
+}
+endsnippet
+
+snippet mockCallout "Create a mock for an http callout for apex testing"
+global HTTPResponse respond(HTTPRequest req) {
+	
+	HttpResponse res = new HttpResponse();
+	res.setHeader('Content-Type', '${1:application/json}');
+	res.setBody('{
+		"example": "test"
+	}');
+	res.setStatusCode(${2:200});
+	return res;
+}
+endsnippet
