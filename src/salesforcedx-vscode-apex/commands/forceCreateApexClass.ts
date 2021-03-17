@@ -8,7 +8,7 @@ import {CliLogLevel} from "../../salesforcedx-core/model/cliLogLevels";
 import {workspace} from "coc.nvim";
 import {getRootWorkspacePath} from "../../salesforcedx-core/utils";
 import {CLASS_NAME_PROMPT, CLASS_TEMPLATE_PROMPT, DEFAULT_APEX_CLASS, CLASS_OUTPUT_DIR_PROMPT} from '../../salesforcedx-core/constants';
-
+import {getDefaultSrcRootPath} from '../utils'
 
 interface CreateApexClassOptions {
   name: string;
@@ -26,7 +26,8 @@ class CreateApexClassGatherer implements ParametersGatherer<CreateApexClassOptio
     }
 
     const template = await workspace.requestInput(CLASS_TEMPLATE_PROMPT, DEFAULT_APEX_CLASS);
-    const defaultApexClassDir = path.resolve(getRootWorkspacePath(), 'force-app', 'main', 'default', 'classes');
+
+    const defaultApexClassDir = path.resolve(getRootWorkspacePath(), getDefaultSrcRootPath(), 'classes');
     const outputDir = await workspace.requestInput(CLASS_OUTPUT_DIR_PROMPT, defaultApexClassDir);
 
     return {

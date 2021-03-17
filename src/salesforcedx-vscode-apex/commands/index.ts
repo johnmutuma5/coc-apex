@@ -11,4 +11,5 @@ export { forceCreateScratchOrg } from './forceCreateScratchOrg';
 export { forceCreateApexClass } from './forceCreateApexClass';
 export { forceRunAnonymousApex } from './forceRunAnonymousApex';
 export { forceExecSoql } from './forceExecSoql';
+export { forceCreateLwc } from './forceCreateLwc';
 

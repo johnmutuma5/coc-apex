@@ -49,3 +49,5 @@ export const CLASS_TEMPLATE_PROMPT = 'Enter class template(ApexException|ApexUni
 export const CLASS_OUTPUT_DIR_PROMPT = 'Enter output directory for the class: ';
 export const CLASS_NAME_PROMPT = 'Enter class name';
 export const DEFAULT_ANONYMOUS_APEX_FILE = 'scripts/apex/hello.apex';
+export const FILE_NAME_PROMPT = 'Enter desired filename';
+export const OUTPUT_DIR_PROMPT = 'Enter desired directory';

@@ -72,8 +72,7 @@ async function createServer(
 
     return {
       options: {
-        env: process.env,
-        stdio: 'pipe'
+        env: process.env
       },
       command: javaExecutable,
       args,
